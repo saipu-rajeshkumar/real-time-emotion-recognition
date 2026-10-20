@@ -1,0 +1,583 @@
+/* ===================================================================
+   Real-Time Facial Emotion Recognition Dashboard Stylesheet
+   Color Palette: Deep Slate Navy, Crisp Blue, Pure White, Cool Gray
+   =================================================================== */
+
+:root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --primary-light: #eff6ff;
+    --primary-border: #bfdbfe;
+    
+    --navy-header: #0f172a;
+    --navy-surface: #1e293b;
+    --navy-card: #0f172a;
+    
+    --bg-page: #f8fafc;
+    --card-bg: #ffffff;
+    --card-border: #e2e8f0;
+    
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    --text-white: #ffffff;
+    
+    --success-color: #10b981;
+    --success-bg: #ecfdf5;
+    --warning-color: #f59e0b;
+    --warning-bg: #fffbeb;
+    --danger-color: #ef4444;
+    --danger-bg: #fef2f2;
+    --info-color: #3b82f6;
+    --info-bg: #eff6ff;
+
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    --shadow-elevated: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    line-height: 1.5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ================= Header ================= */
+.app-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+    color: var(--text-white);
+    padding: 2.2rem 1.5rem;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.header-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(4px);
+    color: #93c5fd;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+}
+
+.app-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+}
+
+.app-subtitle {
+    font-size: 1rem;
+    color: #cbd5e1;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* ================= Main Layout ================= */
+.dashboard-container {
+    max-width: 1200px;
+    width: 94%;
+    margin: 2rem auto;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 1.75rem;
+    flex: 1;
+}
+
+/* ================= Cards ================= */
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.card-icon {
+    font-size: 1.25rem;
+}
+
+/* ================= Badges ================= */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 0.3rem 0.8rem;
+    border-radius: 9999px;
+    transition: all 0.2s ease;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.status-stopped {
+    background-color: #f1f5f9;
+    color: #475569;
+}
+.status-stopped .status-dot {
+    background-color: #94a3b8;
+}
+
+.status-active {
+    background-color: var(--success-bg);
+    color: #065f46;
+}
+.status-active .status-dot {
+    background-color: var(--success-color);
+}
+
+.status-analyzing {
+    background-color: var(--info-bg);
+    color: #1e40af;
+}
+.status-analyzing .status-dot {
+    background-color: var(--primary-color);
+}
+
+.latency-badge {
+    font-size: 0.75rem;
+    font-family: monospace;
+    color: var(--text-muted);
+    background: #f1f5f9;
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-sm);
+}
+
+/* ================= Video Wrapper ================= */
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    max-height: 380px;
+    background-color: #020617;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#webcam {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Mirror video feed so movement matches a real mirror */
+    transform: scaleX(-1);
+}
+
+.hidden-canvas {
+    display: none;
+}
+
+.video-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #0f172a;
+    color: #94a3b8;
+    text-align: center;
+    padding: 1.5rem;
+    z-index: 2;
+}
+
+.video-placeholder.hidden {
+    display: none;
+}
+
+.placeholder-icon {
+    font-size: 3rem;
+    margin-bottom: 0.75rem;
+    opacity: 0.8;
+}
+
+.placeholder-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-white);
+    margin-bottom: 0.25rem;
+}
+
+.placeholder-text {
+    font-size: 0.88rem;
+    max-width: 280px;
+    color: #94a3b8;
+}
+
+/* Scanning Indicator Overlay */
+.scanning-indicator {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(4px);
+    color: #ffffff;
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 0.35rem 0.75rem;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 3;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.scanning-indicator.hidden {
+    display: none;
+}
+
+.pulse-ring {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #38bdf8;
+    box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 6px rgba(56, 189, 248, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(56, 189, 248, 0);
+    }
+}
+
+/* ================= Controls Toolbar ================= */
+.controls-toolbar {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+}
+
+.btn {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--radius-md);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--text-white);
+}
+
+.btn-primary:hover:not(:disabled) {
+    background-color: var(--primary-hover);
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35);
+}
+
+.btn-secondary {
+    background-color: #334155;
+    color: var(--text-white);
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background-color: #1e293b;
+}
+
+.btn:disabled {
+    background-color: #cbd5e1;
+    color: #94a3b8;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.btn-icon {
+    font-size: 0.85rem;
+}
+
+/* ================= Status Hint ================= */
+.camera-info-banner {
+    margin-top: 0.75rem;
+    text-align: center;
+}
+
+.status-hint {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* ================= Privacy Notice ================= */
+.privacy-notice {
+    margin-top: 1.25rem;
+    background-color: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: var(--radius-md);
+    padding: 0.85rem 1rem;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+}
+
+.privacy-header {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    color: var(--navy-header);
+    margin-bottom: 0.3rem;
+}
+
+.privacy-text {
+    line-height: 1.45;
+}
+
+/* ================= Results Panel ================= */
+.dominant-expression-box {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    border: 1px solid var(--primary-border);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.expression-emoji {
+    font-size: 3.5rem;
+    line-height: 1;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    user-select: none;
+}
+
+.expression-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.dominant-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.dominant-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--navy-header);
+    text-transform: capitalize;
+    margin: 0.1rem 0;
+}
+
+.dominant-confidence {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Feedback Banner */
+.feedback-banner {
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.88rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.4;
+}
+
+.feedback-banner.info {
+    background-color: var(--info-bg);
+    color: #1d4ed8;
+    border-left: 4px solid var(--primary-color);
+}
+
+.feedback-banner.warning {
+    background-color: var(--warning-bg);
+    color: #b45309;
+    border-left: 4px solid var(--warning-color);
+}
+
+.feedback-banner.danger {
+    background-color: var(--danger-bg);
+    color: #b91c1c;
+    border-left: 4px solid var(--danger-color);
+}
+
+.feedback-banner.success {
+    background-color: var(--success-bg);
+    color: #047857;
+    border-left: 4px solid var(--success-color);
+}
+
+/* ================= Scores Section ================= */
+.scores-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.scores-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--navy-header);
+    margin-bottom: 0.75rem;
+}
+
+.scores-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.scores-empty-state {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    border: 1px dashed var(--card-border);
+    border-radius: var(--radius-md);
+}
+
+.score-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.score-label-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.score-category {
+    color: var(--text-primary);
+    text-transform: capitalize;
+}
+
+.score-value {
+    color: var(--text-secondary);
+    font-family: monospace;
+    font-weight: 600;
+}
+
+.progress-track {
+    width: 100%;
+    height: 9px;
+    background-color: #f1f5f9;
+    border-radius: 9999px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: var(--primary-color);
+    border-radius: 9999px;
+    transition: width 0.35s ease;
+}
+
+/* Category specific colors for top visual clarity */
+.score-row.dominant .progress-fill {
+    background-color: #2563eb;
+}
+
+/* ================= Educational Disclaimer ================= */
+.disclaimer-box {
+    margin-top: 1.25rem;
+    background-color: #f8fafc;
+    border-top: 1px solid var(--card-border);
+    padding-top: 0.85rem;
+}
+
+.disclaimer-text {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.45;
+}
+
+/* ================= Footer ================= */
+.app-footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: var(--navy-header);
+    color: #94a3b8;
+    font-size: 0.82rem;
+    margin-top: auto;
+}
+
+/* ================= Responsive Design ================= */
+@media (max-width: 900px) {
+    .dashboard-container {
+        grid-template-columns: 1fr;
+        width: 92%;
+        margin: 1.25rem auto;
+    }
+
+    .app-title {
+        font-size: 1.6rem;
+    }
+
+    .video-wrapper {
+        aspect-ratio: 16 / 10;
+        max-height: 320px;
+    }
+}

@@ -1,0 +1,98 @@
+\documentclass{resume} % Use the custom resume.cls style
+
+\usepackage[left=0.4in,top=-0.1in,right=0.4in,bottom=0.4in]{geometry} % Document margins
+\usepackage{hyperref} % For hyperlinks
+\usepackage{fontawesome} % For icons
+\usepackage{xcolor} % For color customization
+
+% Define color for contact information
+\definecolor{contactcolor}{HTML}{0000FF} % Blue color for phone number and email
+
+\begin{document}
+
+% Contact information
+\noindent
+\begin{minipage}[c]{\textwidth}
+    \centering
+    {\huge \scshape RAJESH KUMAR SAIPU} \\ % Name without \vspace{}
+    \vspace{5pt} % Adjust the spacing here as needed
+    \textcolor{contactcolor}{\raisebox{-0.1\height}{\faPhone\ +91 6305777519}} \hspace{10pt}
+    \textcolor{contactcolor}{\href{mailto:youremail@gmail.com}{\faEnvelope\  rajeshkumarsaipu@gmail.com}} \hspace{10pt}
+    \textcolor{contactcolor}{\href{http:www.linkedin.com/in/rajesh-kumar-saipu-70b112353}{\faLinkedin\  LinkedIn}} \hspace{10pt}
+    \textcolor{contactcolor}{\href{https://github.com/saipu-rajeshkumar}{\faGithub\  GitHub}}
+\end{minipage}
+
+% OBJECTIVE
+\begin{rSection}{Objective}
+Highly motivated 3rd year Computer Science student with strong programming, Data Structures, and Algorithms skills, eager to contribute to innovative projects and learn from industry leaders through an internship opportunity.
+\end{rSection}
+
+% EDUCATION SECTION
+\begin{rSection}{Education}
+{\bf B.Tech in Computer Science}, SASI Institute of Technology and Engineering , Tadepalligudem \hfill{\bf Expected 2027} \\
+CGPA: 7.02/10 \hfill AP, India
+
+{\bf Intermediate (MPC)}, Pragathi Junior College in Sajjapuram,Tanuku
+ \hfill {\bf 2021 - 2023} \\
+Percentage: 84.7\% \hfill AP, India
+\end{rSection}
+
+
+% SKILLS SECTION
+\begin{rSection}{Skills}
+
+\begin{tabular}{ @{} >{\bfseries}l @{\hspace{5ex}} p{0.7\textwidth} }
+Programming Languages & C, C++, Python, HTML, CSS, JavaScript \\
+Frameworks/Libraries & Bootstrap, Django, NumPy, Pandas, Tkinter \\
+Databases & MySQL, SQLite \\
+Developer Tools & Git/Github, Google Colab, VS Code, Anaconda \\
+Academic Coursework & Data Structures, Operating Systems (Windows, Unix/Linux), CN, OOP, DBMS \\
+Certifications & Generative AI (Microsoft) $\vert$ Python, NoSQL, DBMS, OOPs, Agile Development, Scrum (Infosys Springboard) $\vert$ Artificial Intelligence (IBM) $\vert$ Data Structures, MySQL (Great Learning) $\vert$ Accenture Developer Program (Accenture) \href{https://www.linkedin.com/in/grishma-gedela/recent-activity/all/}{(View)} \\
+
+\end{tabular}
+
+\end{rSection}
+ % Reduces space by one line
+
+% EXPERIENCE SECTION
+\begin{rSection}{Experience}
+
+\textbf{Infosys $\vert$ Full-Stack Development Intern $\vert$ Remote}
+\hfill {\bf April 2024 - June 2024 }
+\begin{itemize}
+    \itemsep -7pt
+    \item Developed and deployed the "Food Ordering System," a comprehensive online platform using Python, Django, HTML/CSS, JavaScript, and SQLite, enhancing system efficiency and user experience.
+    \item Implemented key features including user authentication, payment gateway integration, and order processing, enhancing security and reliability of transactions.
+    \item Deployed the application on PythonAnywhere, ensuring scalability and reliability, with an estimated 20\% improvement in order processing efficiency based on design optimizations.
+    \item Developed essential soft skills in teamwork, communication, problem-solving, project management, adaptability, leadership, and a strong work ethic, contributing significantly to my professional growth. \href{https://github.com/grishma-gedela/Online-Food-Ordering---Infosys.git}{(Project Link)}
+\end{itemize}
+
+
+\end{rSection}
+
+
+
+% PROJECTS SECTION
+\begin{rSection}{Projects}
+\vspace{-1em}
+\item \textbf{Grishma Tech News:} Developed a fully responsive web application leveraging HTML, CSS, and JavaScript. Integrated the News API for dynamic, real-time content updates and implemented advanced search functionality. Focused on delivering an optimized user experience with intuitive design and seamless navigation. \href{https://github.com/grishma-gedela/Tech-News.git}{(Project Link)}
+\setlength\itemsep{-0.4em}
+\item \textbf{Snake Game:} Developed a classic Snake Game using Python and Pygame, featuring continuous player-controlled movement and a visually appealing design. Implemented real-time user interaction and potential for future enhancements like dynamic difficulty levels. \href{https://github.com/grishma-gedela/Snake-Game.git}{(Project Link)}
+\item \textbf{GameHub:} Created GameHub, a Python project featuring 6 games (GK Quiz, Tic Tac Toe, Hangman, Anagram Solver, etc.) using modular OOP for scalability, stability, and bug resolution through testing. \href{https://github.com/grishma-gedela/GameHub-Python.git}{(Project Link)}
+
+
+\end{rSection}
+
+% EXTRA-CURRICULAR ACTIVITIES SECTION
+\begin{rSection}{Extra-Curricular Activities}
+\begin{itemize}
+    \itemsep -7pt
+    \item Manage \href{http://www.youtube.com/@GrishmaEducationalRainbow}{Grishma Educational Rainbow} producing content that focuses on tech opportunities and knowledge sharing, connecting with a diverse audience to contribute insights and resources to the tech community.
+    \item Active in GirlScript Summer of Code (GSSOC) with contributions to open-source projects, demonstrating technical proficiency and innovation in project presentations at Google Girl Hackathon and Scalar Hackathon.
+    \item Secured First Places at Tech Expos and in PowerPoint Presentations for innovative ideas, demonstrated leadership by coordinating a coding competition, and actively contributed in group discussions.
+
+\end{itemize}
+\end{rSection}
+
+
+\end{document}

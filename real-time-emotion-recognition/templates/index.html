@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Facial Emotion Recognition</title>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Google Font for modern dashboard typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-content">
+            <div class="header-badge">AI Computer Vision Demo</div>
+            <h1 class="app-title">Real-Time Facial Emotion Recognition</h1>
+            <p class="app-subtitle">Deep learning-powered facial expression classification using OpenCV &amp; DeepFace</p>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <!-- Left Panel: Webcam Stream & Controls -->
+        <section class="card camera-card" aria-labelledby="camera-heading">
+            <div class="card-header">
+                <h2 id="camera-heading" class="card-title">
+                    <span class="card-icon" aria-hidden="true">&#128249;</span>
+                    Webcam Feed
+                </h2>
+                <div id="cameraStatusBadge" class="status-badge status-stopped" aria-live="polite">
+                    <span class="status-dot"></span>
+                    <span id="cameraStatusText">Camera Off</span>
+                </div>
+            </div>
+
+            <div class="video-wrapper">
+                <video id="webcam" autoplay playsinline muted></video>
+                <canvas id="captureCanvas" class="hidden-canvas"></canvas>
+
+                <!-- Overlay placeholder when camera is not running -->
+                <div id="videoPlaceholder" class="video-placeholder">
+                    <div class="placeholder-icon">&#128247;</div>
+                    <p class="placeholder-title">Camera Inactive</p>
+                    <p class="placeholder-text">Click &ldquo;Start Camera&rdquo; below to begin real-time analysis</p>
+                </div>
+
+                <!-- Live scanning indicator overlay -->
+                <div id="scanningIndicator" class="scanning-indicator hidden">
+                    <div class="pulse-ring"></div>
+                    <span class="scanning-text">Analyzing frame...</span>
+                </div>
+            </div>
+
+            <div class="controls-toolbar">
+                <button id="startBtn" class="btn btn-primary" type="button">
+                    <span class="btn-icon" aria-hidden="true">&#9654;</span>
+                    Start Camera
+                </button>
+                <button id="stopBtn" class="btn btn-secondary" type="button" disabled>
+                    <span class="btn-icon" aria-hidden="true">&#9632;</span>
+                    Stop Camera
+                </button>
+            </div>
+
+            <div class="camera-info-banner">
+                <p id="analysisStatus" class="status-hint" role="status">
+                    Press &ldquo;Start Camera&rdquo; and allow webcam access.
+                </p>
+            </div>
+
+            <!-- Privacy Notice Card -->
+            <div class="privacy-notice">
+                <div class="privacy-header">
+                    <span class="privacy-icon" aria-hidden="true">&#128274;</span>
+                    <strong>Privacy &amp; Local Processing Guarantee</strong>
+                </div>
+                <p class="privacy-text">
+                    Webcam frames are sampled periodically and analyzed entirely in RAM on your local machine. No video or image files are saved to disk, recorded, or transmitted to external servers.
+                </p>
+            </div>
+        </section>
+
+        <!-- Right Panel: Facial Expression Analysis Results -->
+        <section class="card result-card" aria-labelledby="results-heading">
+            <div class="card-header">
+                <h2 id="results-heading" class="card-title">
+                    <span class="card-icon" aria-hidden="true">&#129302;</span>
+                    Analysis Results
+                </h2>
+                <span id="inferenceLatency" class="latency-badge hidden">-- ms</span>
+            </div>
+
+            <!-- Dominant Expression Showcase -->
+            <div class="dominant-expression-box">
+                <div id="expressionEmoji" class="expression-emoji" aria-hidden="true">&#128528;</div>
+                <div class="expression-details">
+                    <span class="dominant-label">Dominant Expression</span>
+                    <h3 id="dominantExpression" class="dominant-name">Awaiting Input...</h3>
+                    <p id="dominantConfidence" class="dominant-confidence">Confidence: --%</p>
+                </div>
+            </div>
+
+            <!-- Dynamic Feedback / Alert Message -->
+            <div id="feedbackMessage" class="feedback-banner info" role="status">
+                Start your camera to begin detecting facial expressions in real time.
+            </div>
+
+            <!-- Expression Scores Progress Bars -->
+            <div class="scores-section">
+                <h4 class="scores-title">Expression Confidence Scores</h4>
+                <div id="scoresContainer" class="scores-container">
+                    <!-- Populated dynamically by script.js -->
+                    <div class="scores-empty-state">
+                        <p>No analysis scores available yet.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Educational / Scientific Disclaimer -->
+            <div class="disclaimer-box">
+                <p class="disclaimer-text">
+                    <strong>Educational Disclaimer:</strong> This application classifies visible facial muscle movements and surface expressions using a computer vision convolutional model. It does not determine genuine internal emotional or psychological states.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <p>&copy; 2026 Real-Time Facial Emotion Recognition Mini-Project &bull; Built with Flask, OpenCV &amp; DeepFace</p>
+    </footer>
+
+    <!-- Application Script -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
